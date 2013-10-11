@@ -35,10 +35,11 @@ var connections = [];
  */
 socketServer.on('request',function(request){
 
-    console.log('Incoming connection from [' + request.origin + ']');
-
     // accept connection
     var connection = request.accept(null, request.origin);
+
+    // log connection
+    console.log('Welcome [' + connection.remoteAddress + ']');
 
     // add toconnections list
     connections.push(connection);
@@ -48,7 +49,7 @@ socketServer.on('request',function(request){
 
         var received = JSON.parse(message.utf8Data);
 
-        console.log('received message:' + received.type);
+        console.log('I was told by [' + connection.remoteAddress + '] to execute [' + received.type + ']');
 
         switch(received.type) {
             case 'playpause':
@@ -82,7 +83,7 @@ socketServer.on('request',function(request){
         for (var i=connections.length-1;i>=0;i--) {
             if (connections[i] === connection) {
                 connections.splice(i,1);
-                console.log('bye bye');
+                console.log('Bye Bye [' + connection.remoteAddress + ']');
             }
         }
     });
