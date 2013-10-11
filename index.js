@@ -94,7 +94,7 @@ socketServer.on('request',function(request){
 /**
  * Poll track information from Spotify
  */
-pollTrack = function(){
+var pollTrack = function(){
 
     spotify.isRunning(function(err,isRunning){
 
@@ -110,30 +110,33 @@ pollTrack = function(){
     });
 };
 
-pollTrack();
-
 
 /**
  * Poll state from Spotify
  */
-pollState = function(){
+var poll = function() {
 
     spotify.isRunning(function(err,isRunning){
 
         if (!isRunning) {
-            return;
+            return false;
         }
 
         spotify.getState(function(err,state){
-            update('state',state);
-            setTimeout(pollState,1000);
+
+            spotify.getTrack(function(err, track){
+
+                update('state',{'state':state,'track':track});
+
+                setTimeout(poll,1000);
+            });
+
         });
 
     });
-
 };
 
-pollState();
+poll();
 
 /**
  * Push information to clients
