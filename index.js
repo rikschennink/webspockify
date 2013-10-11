@@ -92,26 +92,6 @@ socketServer.on('request',function(request){
 
 
 /**
- * Poll track information from Spotify
- */
-var pollTrack = function(){
-
-    spotify.isRunning(function(err,isRunning){
-
-        if (!isRunning) {
-            return;
-        }
-
-        spotify.getTrack(function(err, track){
-            update('track',track);
-            setTimeout(pollTrack,1000);
-        });
-
-    });
-};
-
-
-/**
  * Poll state from Spotify
  */
 var poll = function() {
