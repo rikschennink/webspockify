@@ -51,7 +51,7 @@ socketServer.on('request',function(request){
     var connection = request.accept(null, request.origin);
 
     // log connection
-    log(connection,'Welcome');
+    log(connection,'Welcome!');
 
     // add toconnections list
     connections.push(connection);
@@ -99,11 +99,11 @@ socketServer.on('request',function(request){
                 break;
             case 'mute':
                 if (muted) {
-                    spotify.unmute();
+                    spotify.unmuteVolume();
                     muted = false;
                 }
                 else {
-                    spotify.mute();
+                    spotify.muteVolume();
                     muted = true;
                 }
                 break;
