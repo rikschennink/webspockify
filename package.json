@@ -1,0 +1,22 @@
+{
+  "name": "WebSpockify",
+  "version": "0.1.0",
+  "description": "NodeJS WebSocket Server to Control Spotify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rikschennink/webspockify"
+  },
+  "author": "Rik Schennink",
+  "license": "",
+  "gitHead": "84a66fa505add964e1d19d2ac188c2799d7aec56",
+  "readmeFilename": "README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "spotify-node-applescript": "~0.2.1",
+    "websocket": "~1.0.8"
+  }
+}

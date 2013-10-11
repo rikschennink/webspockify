@@ -1,4 +1,5 @@
-webspockify
+WebSpockify
 ===========
+NodeJS WebSocket Server to Control Spotify.
 
-Websocket server to control spotify
+*Just for kicks*
